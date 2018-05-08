@@ -1,0 +1,27 @@
+<FlexboxLayout>
+    <StackLayout class="form" [class.dark]="!isLoggedIn">
+
+        <Image src="~/images/logo.png"></Image>
+
+        <TextField hint="Email Address" keyboardType="email"
+            autocorrect="false" autocapitalizationType="none"
+            [(ngModel)]="user.email" class="input input-border">
+        </TextField>
+
+        <TextField hint="Password" secure="true"
+		    [(ngModel)]="user.password" class="input input-border">
+         </TextField>
+
+        <Button [text]="isLoggedIn ? 'Sign in' : 'Sign up'" 
+			 (tap)="submit()" class="btn btn-primary">
+        </Button>
+
+        <Button [text]="isLoggedIn ? 'Sign up' : 'Back to login'"
+            (tap)="toggleDisplay()">
+        </Button>
+    </StackLayout>
+
+	<ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" 
+        row="1" horizontalAlignment="center" verticalAlignment="center">
+     </ActivityIndicator>
+</FlexboxLayout>
